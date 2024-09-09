@@ -1,6 +1,13 @@
 import styles from "../style/page.module.css";
 
 export default function Headline(props) {
+  //なぜプロップス？？？
+  //プロパティの略
+  //プロパティとは、コンポーネントに渡す値のこと
+  //プロパティを使うことで、コンポーネントを再利用できる
+  //プロパティは、コンポーネントの引数として渡す
+  //プロパティは、コンポーネント内でpropsという名前で参照できる
+
   console.log(props.title);
 
   return (
