@@ -1,6 +1,6 @@
 import styles from "../style/page.module.css";
 
-export default function Headline(props) {
+export function Headline(props) {
   //なぜプロップス？？？
   //プロパティの略
   //プロパティとは、コンポーネントに渡す値のこと

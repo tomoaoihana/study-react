@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "../page.module.css";
 import { Footer } from "@/components/footer";
 import { Links } from "@/components/Links";
-import Headline from "@/components/Headline";
+import { Headline } from "@/components/Headline";
 
 export const metadata = {
   title: "ABOUT 講座",
