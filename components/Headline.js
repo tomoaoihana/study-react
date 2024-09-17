@@ -1,4 +1,4 @@
-import styles from "../style/page.module.css";
+import classes from "./Headline.module.css";
 
 export function Headline(props) {
   //なぜプロップス？？？
@@ -9,7 +9,7 @@ export function Headline(props) {
   //プロパティは、コンポーネント内でpropsという名前で参照できる
   return (
     <div>
-      <h1 className={styles.heading}>{props.page} page</h1>
+      <h1 className={classes.heading}>{props.page} page</h1>
 
       <ol>
         <li>INDEX {props.children}</li>
