@@ -1,5 +1,5 @@
 import Image from "next/image";
-import classes from "./Links.module.css";
+import classes from "src/components/Links/Links.module.css";
 
 const ITEMS = [
   {
