@@ -4,4 +4,9 @@ h1.heading {
   line-height: 1.2;
   margin: 0;
   text-transform: capitalize;
+  text-align: center;
+}
+
+ol.wrap {
+  margin-top: 2rem;
 }

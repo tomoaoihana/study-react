@@ -11,12 +11,10 @@ export function Headline(props) {
     <div>
       <h1 className={classes.heading}>{props.page} page</h1>
 
-      <ol>
+      <ol className={classes.wrap}>
         <li>INDEX {props.children}</li>
         <li>Save and see your changes instantly.</li>
       </ol>
-
-      <button onClick={props.onClick}>ぼたん</button>
     </div>
   );
 }
