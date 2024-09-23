@@ -16,6 +16,13 @@
   font-family: var(--font-geist-sans);
 }
 
+.btn {
+  border: 1px solid #333;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-color: white;
+}
+
 @media (prefers-color-scheme: dark) {
   .page {
     --gray-rgb: 255, 255, 255;
