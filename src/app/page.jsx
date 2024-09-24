@@ -4,13 +4,13 @@ import { Header } from "src/components/Header";
 import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
 import styles from "src/app/page.module.css";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
   //分割代入で変数を定義する
   const [count, setCount] = useState(1);
 
-  const handleClick = (e) => {
+  const handleClick = useCallback(() => {
     //この書き方は非推奨
     //ここだと直接fooの値を変更している
     // setFoo(foo + 1);
@@ -20,17 +20,22 @@ export default function Home() {
     //なぜ？
     //setFooは非同期で実行されるため、fooの値が変わっている可能性がある
     //そのため、前回の値を取得するためにはprevという変数を使う
-    setCount((prev) => prev + 1);
-    setCount((prev) => prev + 1);
-  };
+    if (count < 10) {
+      //ここはuseStateの値を変更している
+      setCount((prev) => prev + 1);
+    }
+  }, [count]);
 
   useEffect(() => {
     //DOMに直接アクセスする場合はuseEffectを使う
     document.body.style.backgroundColor = "lightblue"; //マウント時に実行される
+    //クリーンアップ関数
     return () => {
       document.body.style.backgroundColor = ""; //アンマウント時に実行される
     };
-  }, []);
+
+    //配列なので、幾つでも指定できる
+  }, [count]);
 
   return (
     <div className={styles.page}>
