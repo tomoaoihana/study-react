@@ -24,7 +24,7 @@ export default function Home() {
     //そのため、前回の値を取得するためにはprevという変数を使う
     if (count < 10) {
       //ここはuseStateの値を変更している
-      setCount((prev) => prev + 1);
+      setCount((prevCount) => prevCount + 1);
     }
   }, [count]);
 
@@ -48,7 +48,7 @@ export default function Home() {
   }, []);
 
   const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
+    setIsShow((prevIsShow) => !prevIsShow);
   }, []);
 
   return (
