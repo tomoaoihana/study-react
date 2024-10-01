@@ -5,15 +5,17 @@ import { Main } from "src/components/Main";
 import { Footer } from "src/components/Footer";
 import styles from "src/app/page.module.css";
 
-//hooks
-import { useCounter } from "src/hooks/useCounter";
-import { useInputArray } from "src/hooks/useInputArray";
-import { useBgLightBlue } from "src/hooks/useBgLightBlue";
-
-export default function Home() {
-  const { count, isShow, handleClick, handleDisplay } = useCounter(); //カスタムフックを呼び出す
-  const { text, array, handleChange, handleAdd } = useInputArray(); //カスタムフックを呼び出す
-  useBgLightBlue(); //カスタムフックを呼び出す
+export default function Home(props) {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleChange,
+    handleAdd,
+  } = props;
 
   return (
     <div className={styles.page}>
