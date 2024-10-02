@@ -7,7 +7,7 @@ import { Header } from "src/components/Header";
 
 export default function About(props) {
   const {
-    count,
+    doubleCount,
     isShow,
     handleClick,
     handleDisplay,
@@ -21,7 +21,7 @@ export default function About(props) {
     <div className={styles.page}>
       <Header />
       <Main page="About" />
-      {isShow ? <h1>{count}</h1> : null}
+      {isShow ? <h1>{doubleCount}</h1> : null}
       <button href="/about" onClick={handleClick} className={styles.btn}>
         Click me
       </button>
