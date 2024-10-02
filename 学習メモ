@@ -36,3 +36,37 @@ Custom Hooks（カスタムフック）の使い方、使いどころをマス�
 -複数のコンポーネントで同じ処理を行う場合、Custom Hooksを使うことで、処理を共通化できる
 -関数名をuse〜とすることで、Hooksとして認識される
 
+
+✅10/3【Next.jsで学ぶReact講座 #17】
+useMemoの使い方、useRouterの使い方
+
+##useMemoとは？
+-計算量の多い処理を最適化するためのHooks
+-第一引数に計算式、第二引数に依存する値を指定する
+  計算⭐︎結果⭐︎をキャッシュする！！
+useCallbackとの違い：useCallbackは関数をキャッシュする
+
+  const doubleCount = useMemo(() => {
+    return count * 2;
+  }, [count]);
+
+  ↑countが変更された場合のみ、再計算される
+
+
+##useRouterとは？
+-Next.jsのHooks
+-URLパラメータやクエリパラメータを取得するためのHooks
+-Next.jsのページコンポーネント内でのみ使用可能
+
+  const router = useRouter();
+  const { id } = router.query;
+
+  ↑URLパラメータを取得する場合、router.queryを使用する
+
+router.pathname：現在のURLのパス名を取得
+router.query：クエリパラメータを取得
+router.push()：ページ遷移を行う
+router.back()：前のページに戻る
+router.prefetch()：ページの事前読み込みを行う
+
+などなど色々あるので、公式ドキュメントを参照すると良い📚
