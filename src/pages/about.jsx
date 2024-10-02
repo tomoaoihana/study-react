@@ -20,6 +20,7 @@ export default function About(props) {
   return (
     <div className={styles.page}>
       <Header />
+      <Main page="About" />
       {isShow ? <h1>{count}</h1> : null}
       <button href="/about" onClick={handleClick} className={styles.btn}>
         Click me
@@ -32,7 +33,7 @@ export default function About(props) {
         })}
       </ul>
       <button onClick={handleAdd}>追加する</button>
-      <Main page="About" />
+
       <Footer />
     </div>
   );

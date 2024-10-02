@@ -1,5 +1,4 @@
 .footer {
-  grid-row-start: 3;
   display: flex;
   gap: 24px;
 }

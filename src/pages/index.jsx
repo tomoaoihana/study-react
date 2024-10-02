@@ -20,6 +20,7 @@ export default function Home(props) {
   return (
     <div className={styles.page}>
       <Header />
+      <Main page="index" />
       {isShow ? <h1>{count}</h1> : null}
       <button href="/about" onClick={handleClick} className={styles.btn}>
         Click me
@@ -34,7 +35,6 @@ export default function Home(props) {
         })}
       </ul>
 
-      <Main page="index" />
       <Footer />
     </div>
   );
