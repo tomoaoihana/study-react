@@ -13,8 +13,10 @@ export function Headline(props) {
 
       <ol className={classes.wrap}>
         <li>INDEX {props.children}</li>
-        <li>Save and see your changes instantly.</li>
+        <li>アイテムの数は{props.children}こです</li>
       </ol>
+
+      <button onClick={props.handleReduce}>減らす</button>
     </div>
   );
 }
