@@ -21,7 +21,7 @@ export const useInputArray = () => {
       //・配列・オブジェクトの破壊的メソッドは使わないために
       //（NG）push, splice, unshift, pop, shift, reverse, sort
       //⭐️勉強メモへ
-      if (prevArray.some((item) => item === text)) {
+      if (prevArray.includes(text)) {
         alert("同じ要素は追加できません");
         return prevArray;
       }
