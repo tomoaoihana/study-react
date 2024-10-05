@@ -91,4 +91,23 @@ ReactでAPIを叩こう！Next.jsのESLintの設定もついでに紹介！
 
  
 
+✅10/6【Next.jsで学ぶReact講座 #19】
+非同期処理で必要になるローディングとエラーの処理について学ぼう
 
+##非同期処理で必要になるローディングとエラーの処理
+--try-catch文を使ってエラー処理を行う
+
+  const getPosts = useCallback(async () => {
+    try {
+      const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+      const json = await res.json();
+      setPosts(json);
+    } catch (error) {
+      console.error(error);
+    }finaly{
+      setLoading(false);
+    }
+  }, []);
+
+  ↑try内でエラーが発生した場合、catch内の処理が実行される
+  finaly内の処理は、try-catch文の処理が終了した後に実行される
