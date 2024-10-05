@@ -70,3 +70,25 @@ router.back()：前のページに戻る
 router.prefetch()：ページの事前読み込みを行う
 
 などなど色々あるので、公式ドキュメントを参照すると良い📚
+
+✅10/4【Next.jsで学ぶReact講座 #18】
+ReactでAPIを叩こう！Next.jsのESLintの設定もついでに紹介！
+
+##APIを叩く方法
+-ReactでAPIを叩く方法は、fetchメソッドを使用する
+-useCallbackを使って非同期処理を行う
+
+  const getPosts = useCallback(async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const json = await res.json();
+    setPosts(json);
+  }, []);
+
+  ↑useCallbackの第二引数に空の配列を指定することで、初回レンダリング時のみ実行される
+
+ ⭐︎初期値を指定しないとエラーになる------↓
+ const [posts, setPosts] = useState([]);
+
+ 
+
+
