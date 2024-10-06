@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react";
 export const useBgColor = () => {
   const router = useRouter();
 
-  console.log(router);
+  // console.log(router);
 
   //useMemoは値をキャッシュする
   //色の変更がある場合は再計算される

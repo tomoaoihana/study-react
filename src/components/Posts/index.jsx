@@ -1,12 +1,41 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useReducer } from "react";
+
+const initialState = {
+  data: [],
+  loading: true,
+  error: null,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "end": {
+      console.log(action);
+      return {
+        ...state,
+        data: action.data,
+        loading: false,
+      };
+    }
+
+    case "error": {
+      console.log(action);
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+    }
+
+    default: {
+      throw new Error("no such action type!");
+    }
+  }
+};
 
 export const Posts = () => {
-  //⭐︎初期値を指定しないとエラーになる
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const getPosts = useCallback(async () => {
     try {
@@ -16,11 +45,9 @@ export const Posts = () => {
       }
 
       const json = await res.json();
-      setPosts(json);
+      dispatch({ type: "end", data: json });
     } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
+      dispatch({ type: "error", error });
     }
   }, []);
 
@@ -28,21 +55,23 @@ export const Posts = () => {
     getPosts();
   }, [getPosts]);
 
-  if (loading) {
+  console.log("foo");
+
+  if (state.loading) {
     return <p>ローディング中です・・・・</p>;
   }
 
-  if (error) {
-    return <p>{error.message}</p>;
+  if (state.error) {
+    return <p>{state.error.message}</p>;
   }
 
-  if (posts.length === 0) {
+  if (state.data.length === 0) {
     return <p>データがありません</p>;
   }
 
   return (
     <ol>
-      {posts.map((post) => {
+      {state.data.map((post) => {
         return (
           <li key={post.id}>
             <h2>{post.title}</h2>

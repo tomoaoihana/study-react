@@ -111,3 +111,67 @@ ReactでAPIを叩こう！Next.jsのESLintの設定もついでに紹介！
 
   ↑try内でエラーが発生した場合、catch内の処理が実行される
   finaly内の処理は、try-catch文の処理が終了した後に実行される
+
+
+✅10/7【Next.jsで学ぶReact講座 #20】
+useReducerの使い方を学ぼ
+
+  //Stateを一つにまとめる
+  //⭐︎関数を使って前の値を取得する
+  //スプレッド構文で展開して、新しい値を追加する
+
+    ...prevState：
+  既存のStateを展開する
+  
+    data: [],
+    loading: true,
+    error: null,
+
+  setState((prevState) => {
+    return {
+      ...prevState,
+      data: json,
+      loading: false,
+  
+    };
+  });
+
+  ↑スプレッド演算子を使うことでdataの値だけを更新する場合、他の値はそのままになる
+  ⭐︎書き換えたい値だけを更新することができる
+
+  ##useReducerとは？
+  -Stateを一つにまとめるHooks
+  -前のStateを取得して、新しいStateを返す関数を使う時に好ましい
+
+  -dispatch関数を使って、Stateを更新する
+  下位コンポーネントにStateを渡す場合、useReducerを使うとパフォーマンスが向上する
+
+  (satate,action) => newState
+　⭐︎stateとactionを受け取って新しいstateを作る！！
+
+
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "end":
+      return {
+        ...state,
+        data: action.data,
+        loading: false,
+      };
+
+    case "error":
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
+      };
+
+    default:
+      throw new Error("no such action type!");
+  }
+};
+
+reducer？？
+-前のStateとactionを受け取って、新しいStateを返す関数（大事）
+dispatch関数を使って、Stateを更新する
