@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { usePosts } from "../../hooks/usePosts";
 
 export const Posts = () => {
@@ -23,8 +24,9 @@ export const Posts = () => {
       {data.map((post) => {
         return (
           <li key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.body}</p>
+            <Link href={`/post/${post.id}`}>
+              <h2>{post.title}</h2>
+            </Link>
           </li>
         );
       })}
