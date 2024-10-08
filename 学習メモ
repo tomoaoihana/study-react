@@ -150,7 +150,6 @@ useReducerの使い方を学ぼ
 　⭐︎stateとactionを受け取って新しいstateを作る！！
 
 
-
 const reducer = (state, action) => {
   switch (action.type) {
     case "end":
@@ -175,3 +174,14 @@ const reducer = (state, action) => {
 reducer？？
 -前のStateとactionを受け取って、新しいStateを返す関数（大事）
 dispatch関数を使って、Stateを更新する
+
+✅10/8【Next.jsで学ぶReact講座 #21】
+SWRを使った非同期処理（fetch）
+
+自力で非同期処理を書くと、ローディングやエラー処理を実装するのが大変
+バグが発生しやすい
+なので、SWRやReact Queryを使うと、非同期処理を簡単に実装できる
+
+
+##SWRとは？
+-Next.jsの非同期処理を簡単に行うためのライブラリ
