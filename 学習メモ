@@ -185,3 +185,31 @@ SWRを使った非同期処理（fetch）
 
 ##SWRとは？
 -Next.jsの非同期処理を簡単に行うためのライブラリ
+
+✅10/9【Next.jsで学ぶReact講座 #22】
+ファイルシステムルーティングを学ぼう
+
+##ファイルシステムルーティングとは？
+-Next.jsのページを作成する際、ファイルとディレクトリの構造をそのままURLとして使える
+
+pagesディレクトリ内にファイルを作成することで、URLとしてアクセスできる
+pagesディレクトリ内にディレクトリを作成することで、ネストしたURLを作成できる
+
+
+✅10/11【【Next.jsで学ぶReact講座 #23】
+動的なページで条件付きfetchや連続fetchをしてみよう！
+
+##動的なページとは？
+-URLパラメータを使って、動的なページを作成することができる
+
+条件付きfetch：URLパラメータを使って、条件によってfetchを行う
+連続fetch：fetchを連続して行う
+
+   const { data: post, error: postError } = useSWR(
+    router.query.id
+      ? `https://jsonplaceholder.typicode.com/posts/${router.query.id}`
+      : null,
+    fetcher
+  );
+
+  ↑URLパラメータがある場合、fetchを行う
