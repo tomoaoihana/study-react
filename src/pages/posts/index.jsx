@@ -8,7 +8,9 @@ const Home = () => {
   return (
     <div className={styles.page}>
       <Header />
-      <Posts />
+      <div className={styles.inner}>
+        <Posts />
+      </div>
     </div>
   );
 };
