@@ -6,7 +6,7 @@ import styles from "src/app/page.module.css";
 
 const Posts = () => {
   return (
-    <div className={styles.page}>
+    <div>
       <Header />
       <div className={styles.inner}>
         <PostsComponent />

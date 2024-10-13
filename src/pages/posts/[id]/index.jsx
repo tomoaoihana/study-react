@@ -6,7 +6,7 @@ import { Post } from "src/components/Post";
 
 const PostsId = () => {
   return (
-    <div className={styles.page}>
+    <div>
       <Header />
       <div className={styles.inner}>
         <Post />

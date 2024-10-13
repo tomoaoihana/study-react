@@ -1,11 +1,14 @@
 import "src/app/globals.css";
+import { Layout } from "src/components/Layout";
 
 //hooks
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };

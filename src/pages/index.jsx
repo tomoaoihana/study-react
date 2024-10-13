@@ -7,7 +7,7 @@ import { Header } from "src/components/Header";
 
 const Index = () => {
   return (
-    <div className={styles.page}>
+    <div>
       <Head>
         <title>Index Page</title>
       </Head>
