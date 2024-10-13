@@ -4,13 +4,15 @@ import { Header } from "src/components/Header";
 import styles from "src/app/page.module.css";
 import { Post } from "src/components/Post";
 
-const PostId = () => {
+const PostsId = () => {
   return (
     <div className={styles.page}>
       <Header />
-      <Post />
+      <div className={styles.inner}>
+        <Post />
+      </div>
     </div>
   );
 };
 
-export default PostId;
+export default PostsId;
