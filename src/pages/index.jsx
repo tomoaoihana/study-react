@@ -12,7 +12,7 @@ const Index = () => {
         <title>Index Page</title>
       </Head>
       <Header />
-      <div className={styles.inner}>
+      <div className={styles.innerTop}>
         <h1>Next.jsで学ぶReact講座</h1>
         <p>JSONPlaceholderのAPIを色々叩いてみるよ！</p>
       </div>
