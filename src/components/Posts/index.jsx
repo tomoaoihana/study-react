@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { usePosts } from "../../hooks/usePosts";
+import { usePosts } from "src/hooks/useFetchArray";
 
 export const Posts = () => {
   const { data, error, isLoading, isEmpty } = usePosts();
