@@ -3,9 +3,11 @@ import Head from "next/head";
 import { usePost } from "../../hooks/usePost";
 import { CommentsByPostId } from "src/components/Comments/CommentsByPostId";
 import { UserByUserId } from "src/components/User/UserByUserId";
+import { useRouter } from "next/router";
 
 export const Post = () => {
-  const { data, error, isLoading } = usePost();
+  const router = useRouter();
+  const { data, error, isLoading } = usePost(router.query.id);
 
   if (isLoading) {
     return <p>ローディング中です・・・・</p>;
