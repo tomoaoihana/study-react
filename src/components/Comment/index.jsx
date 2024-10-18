@@ -14,12 +14,13 @@ const Comment = () => {
 
   return (
     <div>
-      <PostsByCommentId id={data?.id} />
-      <h2>コメント：{data?.body}</h2>
+      <h2>{data?.body}</h2>
       <ul>
         <li>{data?.name}</li>
         <li>{data?.email}</li>
       </ul>
+
+      <PostsByCommentId id={data?.postId} />
     </div>
   );
 };
