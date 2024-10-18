@@ -1,3 +1,4 @@
+import { PostsByUserId } from "src/components/Posts/PostsByUserId";
 import { useUser } from "src/hooks/useUser";
 
 export const User = () => {
@@ -21,6 +22,8 @@ export const User = () => {
         <li>{user?.phone}</li>
         <li>{user?.website}</li>
       </ul>
+
+      <PostsByUserId id={user?.id} />
     </div>
   );
 };
