@@ -223,3 +223,6 @@ A:Added（追加）
 D:Deleted（削除）
 U:Untracked（ファイルの追加やディレクトリ名を変えた時）
 R:Renamed（名前変更）
+
+✅10/19【Next.jsで学ぶReact講座 #28】
+Tailwind CSSをNext.jsに導入しよう
