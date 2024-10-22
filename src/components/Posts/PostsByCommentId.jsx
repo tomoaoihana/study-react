@@ -18,7 +18,9 @@ export const PostsByCommentId = (props) => {
 
   return (
     <div>
-      <Link href={`/posts/${data.id}`}>元記事：{data.title}</Link>
+      <Link className="text-lg hover:text-pink-200" href={`/posts/${data.id}`}>
+        {data.title}
+      </Link>
     </div>
   );
 };

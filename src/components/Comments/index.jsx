@@ -17,16 +17,19 @@ export const Comments = () => {
   }
 
   return (
-    <ol>
+    <ul className="space-y-2 mt-4">
       {data.map((comment) => {
         return (
-          <li key={comment.id}>
-            <Link href={`comments/${comment.id}`}>
-              <h2>name：{comment.name}</h2>
+          <li key={comment.id} className="border-b pb-2">
+            <Link
+              href={`comments/${comment.id}`}
+              className=" block  hover:text-pink-200"
+            >
+              <h2>{comment.body}</h2>
             </Link>
           </li>
         );
       })}
-    </ol>
+    </ul>
   );
 };

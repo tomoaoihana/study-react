@@ -5,7 +5,7 @@ const Comments = () => {
   return (
     <div>
       <Header />
-      <h1>Comments</h1>
+      <h1 className="font-bold text-2xl">Comments</h1>
       <CommentsComponent />
     </div>
   );
