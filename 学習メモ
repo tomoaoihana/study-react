@@ -226,3 +226,44 @@ R:Renamed（名前変更）
 
 ✅10/19【Next.jsで学ぶReact講座 #28】
 Tailwind CSSをNext.jsに導入しよう
+
+
+✅10/25【Next.jsで学ぶReact講座 #30】
+SWRとSSR（サーバーサイドレンダリング）基礎編
+
+fetchertとは？？
+どういう風に非同期処理を行うのか設定している
+fetcherは、useSWRの第二引数に指定する関数
+　fetchとはwindow.fetch
+  fetcherは、fetchをラップした関数
+  fetcherを使うことで、fetchのエラー処理を共通化できる
+
+  const fetcher = async (url) => {
+    const res = await fetch(url);
+    if (!res.ok) {
+      throw new Error("エラーが発生しました");
+    }
+    return res.json();
+  };
+
+  ↑fetcher関数を使って、fetchのエラー処理を共通化している   
+
+  SWRconfigとは？？
+  SWRの設定をまとめて管理するためのコンポーネント
+  SWRconfigコンポーネント内で、fetcher関数を設定することで、fetcher関数を共通化できる
+    <SWRConfig
+      value={{
+        refreshInterval: 3000,
+        fetcher: (resource, init) => fetch(resource, init).then(res => res.json())
+      }}
+    >
+      <Dashboard />
+    </SWRConfig>
+
+
+    ##gitをひとつ前に戻す方法
+    ⭐︎git reset --hard HEAD^
+
+    戻したいコミットの一つ前のコミットを指定する
+    --hard：コミットを戻すときに、ワーキングディレクトリの変更も取り消す
+    

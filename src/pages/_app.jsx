@@ -1,14 +1,26 @@
 import "src/app/globals.css";
 import { Layout } from "src/components/Layout";
+import { SWRConfig } from "swr";
 
-//hooks
+const fetcher = async (...args) => {
+  const res = await fetch(...args);
+
+  if (!res.ok) {
+    throw new Error("データにエラーが発生しました");
+  }
+
+  const json = await res.json();
+  return json;
+};
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <SWRConfig value={{ fetcher }}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SWRConfig>
     </>
   );
 };
