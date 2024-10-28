@@ -4,8 +4,6 @@ import { useUsers } from "src/hooks/useFetchArray";
 export const Users = () => {
   const { data, error, isLoading, isEmpty } = useUsers();
 
-  // console.log({ data, error });
-
   if (isLoading) {
     return <p>ローディング中です・・・・</p>;
   }
