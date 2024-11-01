@@ -275,8 +275,57 @@ fetcherは、useSWRの第二引数に指定する関数
     ・サーバー側でfetchを行うことで、初回レンダリング時のパフォーマンスが向上する
 
     ✅getServerSideProps
-    -Next.jsの関数
+    -⭐︎Next.jsの関数
     ・サーバーサイドでデータを取得して、コンポーネントにpropsとして渡す
     ・サーバーサイドでのみ実行される
     ・クライアント側でのfetchは行わない
 
+    SWRのfallbackとは？
+    -サーバーサイドレンダリング時に、fetchが完了するまで表示するコンポーネント
+    -fallbackには、ローディング中のコンポーネントを指定する
+
+
+✅10/29【Next.jsで学ぶReact講座 #31】
+SWRとSSR（サーバーサイドレンダリング）マスター編
+
+#複数のfetchを行う場合
+
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.query;
+
+  //ユーザー情報の取得
+  const USER_API_URL = `https://jsonplaceholder.typicode.com/users/${id}`;
+  const user = await fetch(USER_API_URL);
+  const userData = await user.json();
+
+  //ユーザー投稿の取得
+  const POSTS_API_URL = `https://jsonplaceholder.typicode.com/posts?userId=${userData.id}`;
+  const posts = await fetch(POSTS_API_URL);
+  const postsData = await posts.json();
+
+  return {
+    props: {
+      fallback: {
+        [USER_API_URL]: userData,
+        [POSTS_API_URL]: postsData,
+      },
+    },
+  };
+};
+
+各APIのURLを定数に格納して、fetchを行う
+fetchを行った結果をそれぞれの変数に格納する
+propsにfallbackを返す
+fallbackには、各APIのURLとfetch結果をオブジェクトで格納している
+
+
+##SWR immutableとは？
+--自動再検証の無効化
+--immutableをtrueにすることで、再検証を無効化する
+　import useSWRImmutable from "swr/immutable";
+
+--再検証を行っても変更されない場合は、そのリソースのすべての種類の自動再検証を無効にできます。
+
+リクエスト数を減らすことができることは大切！！！
+でも、リウエスト性を無効にすると、データが更新されないので、注意が必要！！
+リクエスト性を求められる場合は、無効にする！！
