@@ -3,7 +3,12 @@ import Comment from "src/components/Comment";
 import { SWRConfig } from "swr";
 
 export const getStaticPaths = async () => {
-  const comments = await fetch("https://jsonplaceholder.typicode.com/comments");
+  //コメントのAPI一覧を取得する
+  //idを取得して、それぞれのidに対応するページを作成する
+  //idはstring型なので、toString()で文字列に変換する
+  const comments = await fetch(
+    "https://jsonplaceholder.typicode.com/comments?_limit=10"
+  );
   const commentsData = await comments.json();
   const paths = commentsData.map((comment) => ({
     params: { id: comment.id.toString() },
@@ -11,7 +16,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths, //同じ名前の時は省略可能
-    fallback: false,
+    fallback: "blocking", //true, false, blockingのいずれかを指定
   };
 };
 
@@ -19,10 +24,15 @@ export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
 
   const COMMENT_API_URL = `https://jsonplaceholder.typicode.com/comments/${id}`;
-
-  console.log(`comments/${id}のSGの処理が実行されました`);
-
   const comment = await fetch(COMMENT_API_URL);
+
+  if (!comment.ok) {
+    //データが取得できなかった場合は、notFound（４０４）を返す
+    return {
+      notFound: true,
+    };
+  }
+
   const commentData = await comment.json();
 
   return {
@@ -36,6 +46,7 @@ export const getStaticProps = async (ctx) => {
 
 const CommentId = (props) => {
   const { fallback } = props;
+
   return (
     <div>
       <Header />

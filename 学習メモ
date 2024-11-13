@@ -359,6 +359,61 @@ SSGの弱点
 --リクエストが行われないため、データが更新されない
 --更新が求められるページは使えない
 
+✅11/5【Next.jsで学ぶReact講座 #33】
+動的なルートでのStatic Generationのやり方。getStaticPathsを理解しよう！
+
+##getStaticPathsとは？
+--動的なルートでStatic Generationを行うための関数
+--動的なルートのパスを指定するための関数
+
+⭐︎ getStaticPathsで、どのルートをSSG化するかを指定する
+⭐︎ getStaticPropsで、SSG化するページのデータを取得する
+
+
+export const getStaticPaths = async () => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users");
+  const users = await res.json();
+
+  const paths = users.map((user) => ({
+    params: { id: user.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+};　
+
+✅11/6【Next.jsで学ぶReact講座 #34】
+動的なルートでのStatic Generationのやり方。getStaticPathsを理解しよう！
+
+##Static Generationのページが多すぎる場合の対処法
+ーー全てのページをSG化するのは、避けるべき（buildに時間がかかる）
+ーーgetStaticPathsで、必要なページだけをSG化する
+
+⭐︎ユーザーがリクエストを行ったタイミングで、そのページを初めてSG化する
+--fallback: trueを指定することで、リクエスト時にSG化することができる!!!
+fallbackをtrueにする場合は、router.isFallbackを使ってローディング中のコンポーネントを表示する（じゃないとbuild時にエラーになる）
+
+  const { router } = useRouter();
+
+  if (router.isFallback) {
+    return <div>...loading</div>;
+  }
+
+  ↑router.isFallbackを使って、ローディング中のコンポーネントを表示する
+
+  ⭐️fallback: "blocking"を指定することで、リクエスト時にSG化することができる（しまぶーさんはここ推奨している）
+  なぜか？？
+  NEXTjsのプリフェッチ機能があって、画面上に表示すると勝手にSG化してくれる！！
+
+   prefetch={false}を指定することで、プリフェッチ機能を無効にすることができる
+   hoverしたタイミングで、フェッチが行われる
+
+  fallback:trueとの違い
+  true：クライアント側でリクエスト時にSG化する(SG化がすぐに始まるので、loadingなどの処理が必要)
+  blocking：サーバーサイドでリクエスト時にSG化する（SG化されるまで何も表示されない）
 
 
 
+✅11/13【Next.jsで学ぶReact講座 #35】
+SSRとSGの良いとこ取り？Next.js最難関のISRをマスターせよ！
+
+SGは更新を反映させることができない
