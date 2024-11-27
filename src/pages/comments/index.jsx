@@ -6,7 +6,6 @@ import { API_URL } from "src/utils/const";
 export const getStaticProps = async () => {
   const COMMENTS_API_URL = `${API_URL}/comments`;
   console.log("SGの処理が実行されました");
-
   const comments = await fetch(COMMENTS_API_URL);
   const commentsData = await comments.json();
 
@@ -16,6 +15,7 @@ export const getStaticProps = async () => {
         [COMMENTS_API_URL]: commentsData,
       },
     },
+    revalidate: 10,
   };
 };
 

@@ -7,10 +7,9 @@ export const getStaticPaths = async () => {
   //コメントのAPI一覧を取得する
   //idを取得して、それぞれのidに対応するページを作成する
   //idはstring型なので、toString()で文字列に変換する
-  const comments = await fetch(
-    `${API_URL}/comments?_limit=10`
-  );
+  const comments = await fetch(`${API_URL}/comments?_limit=10`);
   const commentsData = await comments.json();
+
   const paths = commentsData.map((comment) => ({
     params: { id: comment.id.toString() },
   }));
@@ -21,16 +20,20 @@ export const getStaticPaths = async () => {
   };
 };
 
+//getStaticPropsは一回しか呼ばれない
 export const getStaticProps = async (ctx) => {
   const { id } = ctx.params;
 
   const COMMENT_API_URL = `${API_URL}/comments/${id}`;
   const comment = await fetch(COMMENT_API_URL);
 
+  // console.log(COMMENT_API_URL);
+
   if (!comment.ok) {
     //データが取得できなかった場合は、notFound（４０４）を返す
     return {
       notFound: true,
+      revalidate: 1000,
     };
   }
 
@@ -42,6 +45,7 @@ export const getStaticProps = async (ctx) => {
         [COMMENT_API_URL]: commentData,
       },
     },
+    revalidate: 1000,
   };
 };
 

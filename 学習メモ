@@ -417,3 +417,11 @@ fallbackをtrueにする場合は、router.isFallbackを使ってローディン
 SSRとSGの良いとこ取り？Next.js最難関のISRをマスターせよ！
 
 SGは更新を反映させることができない
+
+ISRとは？
+--Incremental Static Regeneration
+--SGのページを更新することができる
+
+⭐️ISRの設定
+--revalidateを指定することで、再生成の間隔を設定することができる
+--revalidate: 10を指定することで、10秒間は再生成されない（キャッシュを返しますよ〜）
